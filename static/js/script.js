@@ -41,7 +41,7 @@ function render(time) {
   twgl.resizeCanvasToDisplaySize(gl.canvas);
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
-  var shadowAmt = 13 * (1 + Math.sin(time / 1000.0) ) / 2.0 + 4.0;
+  var shadowAmt = 10 * (1 + Math.sin(time / 1000.0) ) / 2.0 + 4.0;
   $('canvas').css({
     'box-shadow' : "0px 0px " + shadowAmt + "px " + shadowAmt + "px #fff"
   });
