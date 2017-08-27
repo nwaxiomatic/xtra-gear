@@ -3,7 +3,7 @@
 function resizeVideo(){
     var h = $(document).height();
     var w = $(document).width();
-    var centerBox = $('canvas');
+    var centerBox = $('.center-box');
     var size = '70';
     if(h > w){
         centerBox.css({
@@ -31,7 +31,7 @@ var textures = twgl.createTextures(gl, {
   cloud2: { src: "static/img/cloud2.jpg" },
   cloud3: { src: "static/img/cloud3.jpg" },
 }, function(){
-  $('canvas').addClass('shown');
+  $('.container').addClass('shown');
 });
 
 var arrays = {
@@ -44,7 +44,7 @@ function render(time) {
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
   var shadowAmt = 10 * (1 + Math.sin(time / 1000.0) ) / 2.0 + 4.0;
-  $('canvas').css({
+  $('.canvas-bg').css({
     'box-shadow' : "0px 0px " + shadowAmt + "px " + shadowAmt + "px #000"
   });
 
