@@ -7,14 +7,14 @@ function resizeVideo(){
     var size = '70';
     if(h > w){
         centerBox.css({
-            'width' : size + 'vh',
-            'height' : size + 'vh',
+            'width' : size + 'vw',
+            'height' : size + 'vw',
         })
     }
     else {
         centerBox.css({
-            'width' : size + 'vw',
-            'height' : size + 'vw',
+            'width' : size + 'vh',
+            'height' : size + 'vh',
         })
     }
 }
@@ -40,6 +40,11 @@ var bufferInfo = twgl.createBufferInfoFromArrays(gl, arrays);
 function render(time) {
   twgl.resizeCanvasToDisplaySize(gl.canvas);
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+
+  var shadowAmt = 13 * (1 + Math.sin(time / 1000.0) ) / 2.0 + 4.0;
+  $('canvas').css({
+    'box-shadow' : "0px 0px " + shadowAmt + "px " + shadowAmt + "px #fff"
+  });
 
   var uniforms = {
     time: time * 0.001,

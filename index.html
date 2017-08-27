@@ -12,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta property="og:title" content="X-TRA GEAR" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="http://twgljs.org/examples/screenshots/tiny.png" />
-    <meta property="og:description" content="X-TRA GEAT" />
+    <meta property="og:image" content="static/img/xtra.png" />
+    <meta property="og:description" content="X-TRA GEAR" />
     <meta property="og:url" content="http://xtragear.services" />
 
     <link rel="stylesheet" type="text/css" href="static/css/styles.css"> 
@@ -24,9 +24,7 @@
 
 
   <body>
-  	<div class="center">
     	<canvas id="c"></canvas>
-	</div>
   </body>
 
 <!-- VERTEX SHADER -->
@@ -46,6 +44,7 @@ precision mediump float;
 precision mediump int;
 
 uniform sampler2D tex;
+uniform sampler2D old_tex;
 uniform sampler2D phase_tex_r;
 uniform sampler2D phase_tex_g;
 uniform sampler2D phase_tex_b;
@@ -61,25 +60,33 @@ uniform float time  ;
 
 void main(){
 
-float scale = 0.08;
-float pixels = 3.0;
+float scale = 0.02;
+float pixels = 1.0;
 vec2 distance = vec2(pixels, pixels) / resolution;
   
-  vec2 posn = SCALED_TEX_COORD(gl_FragCoord.xy, resolution);
+  vec2 poso = SCALED_TEX_COORD(gl_FragCoord.xy, resolution);
+  vec2 posn = poso + vec2(-time/30.0, 0.0);
+  posn = MODULUS(posn, 1.0);
+  vec2 poso2 = poso + vec2(-time/50.0, 0.0);
 
   vec2 pos_r = MODULUS(posn + vec2(distance.x, 0.0), 1.0);
   vec2 pos_l = MODULUS(posn + vec2(-distance.x, 0.0), 1.0);
   vec2 pos_u = MODULUS(posn + vec2(0.0, -distance.y), 1.0);
   vec2 pos_d = MODULUS(posn + vec2(0.0, distance.y), 1.0);
  
+  vec3 dt_ = texture2D(tex, posn).rgb - texture2D(tex, poso2).rgb;
   vec3 dx_ = texture2D(tex, pos_l).rgb - texture2D(tex, pos_r).rgb;
   vec3 dy_ = texture2D(tex, pos_u).rgb - texture2D(tex, pos_d).rgb;
   
   // sum rgb-channels
-  float dt = SUM_RGB( texture2D( phase_tex_r, posn ) );
+  float dt_1 = SUM_RGB( texture2D( phase_tex_r, posn ) );
 
-  float dt_g = SUM_RGB( texture2D( phase_tex_g, posn ) );
-  float dt_b = SUM_RGB( texture2D( phase_tex_b, posn ) );
+  float dt_2 = SUM_RGB( texture2D( phase_tex_g, posn ) );
+  float dt_3 = SUM_RGB( texture2D( phase_tex_b, posn ) );
+
+  float dt = (1.1 * dt_1 + dt_2 + dt_3)/4.0;
+  float dt_g = (1.1 * dt_2 + dt_1 + dt_3)/4.0;
+  float dt_b = (1.1 * dt_3 + dt_2 + dt_1)/4.0;
 
   float dx = SUM_RGB(dx_);
   float dy = SUM_RGB(dy_);
@@ -88,6 +95,7 @@ vec2 distance = vec2(pixels, pixels) / resolution;
   float dd = sqrt(dx*dx + dy*dy + .001);
 
   // optical flow
+  vec2 flow_o = scale * SUM_RGB(dt_) * vec2(dx, dy) / dd;
   vec2 flow = scale * (1.0 + sin(dt + time)) / 2.0 * vec2(dx, dy) / dd; 
 
   vec2 flow_r = scale * (1.0 + sin(dt + time)) / 2.0 * vec2(dx_.r, dy_.r) / dd; 
@@ -95,8 +103,8 @@ vec2 distance = vec2(pixels, pixels) / resolution;
   vec2 flow_b = scale * (1.0 + sin(dt_b + time)) / 2.0 * vec2(dx_.b, dy_.b) / dd; 
  
  
-  gl_FragColor = texture2D(tex , posn + flow);
-  gl_FragColor = vec4(texture2D(tex , posn + flow_r).r, texture2D(tex , posn + flow_g).g, texture2D(tex , posn + flow_b).b, 1.0);
+  //gl_FragColor = texture2D(old_tex , pos) + texture2D(tex , posn);
+  gl_FragColor = (2.0 * texture2D(tex , posn + flow_o) + vec4(texture2D(tex , posn + flow_r).r, texture2D(tex , posn + flow_g).g, texture2D(tex , posn + flow_b).b, 1.0) ) / 3.0;
   //gl_FragColor = vec4(dd, dd, dd, dd);
 }
   </script>
