@@ -62,12 +62,13 @@ void main(){
 
 float scale = 0.02;
 float pixels = 1.0;
-vec2 distance = vec2(pixels, pixels) / resolution;
+vec2 resolution_n = vec2(resolution.x * 1.5, resolution.y);
+vec2 distance = vec2(pixels, pixels) / resolution_n;
   
-  vec2 poso = SCALED_TEX_COORD(gl_FragCoord.xy, resolution);
-  vec2 posn = poso + vec2(-time/30.0, 0.0);
+  vec2 poso = SCALED_TEX_COORD(gl_FragCoord.xy, resolution_n);
+  vec2 posn = poso + vec2(time/30.0, 0.0);
   posn = MODULUS(posn, 1.0);
-  vec2 poso2 = poso + vec2(-time/50.0, 0.0);
+  vec2 poso2 = posn + vec2(0.013 * sin(time), 0.0);
 
   vec2 pos_r = MODULUS(posn + vec2(distance.x, 0.0), 1.0);
   vec2 pos_l = MODULUS(posn + vec2(-distance.x, 0.0), 1.0);
@@ -104,7 +105,7 @@ vec2 distance = vec2(pixels, pixels) / resolution;
  
  
   //gl_FragColor = texture2D(old_tex , pos) + texture2D(tex , posn);
-  gl_FragColor = (2.0 * texture2D(tex , posn + flow_o) + vec4(texture2D(tex , posn + flow_r).r, texture2D(tex , posn + flow_g).g, texture2D(tex , posn + flow_b).b, 1.0) ) / 3.0;
+  gl_FragColor = (1.5 * texture2D(tex , posn + flow_o) + vec4(texture2D(tex , posn + flow_r).r, texture2D(tex , posn + flow_g).g, texture2D(tex , posn + flow_b).b, 1.0) ) / 2.0;
   //gl_FragColor = vec4(dd, dd, dd, dd);
 }
   </script>
