@@ -43,7 +43,7 @@ function render(time) {
 
   var shadowAmt = 10 * (1 + Math.sin(time / 1000.0) ) / 2.0 + 4.0;
   $('canvas').css({
-    'box-shadow' : "0px 0px " + shadowAmt + "px " + shadowAmt + "px #fff"
+    'box-shadow' : "0px 0px " + shadowAmt + "px " + shadowAmt + "px #000"
   });
 
   var uniforms = {

@@ -1,7 +1,14 @@
 body {
   margin: 0;
   font-family: monospace;
-  background-color: black;
+  background-color: white;
+  /*
+  background: url(../img/bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  */
 }
 canvas {
   display: block;
