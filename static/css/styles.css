@@ -28,3 +28,15 @@ width: 100%;
 text-align: center;
 z-index: 2;
 }
+
+.hidden {
+    transition: visibility 2s, opacity 2s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.shown {
+    transition: visibility 2s, opacity 2s;
+    visibility: visible;
+    opacity: 1;
+}

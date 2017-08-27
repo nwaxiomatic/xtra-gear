@@ -60,6 +60,8 @@ function render(time) {
   twgl.setUniforms(programInfo, uniforms);
   twgl.drawBufferInfo(gl, bufferInfo);
 
+  $('canvas').addClass('shown');
+
   requestAnimationFrame(render);
 }
 requestAnimationFrame(render);
