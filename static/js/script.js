@@ -30,6 +30,8 @@ var textures = twgl.createTextures(gl, {
   cloud1: { src: "static/img/cloud.jpg" },
   cloud2: { src: "static/img/cloud2.jpg" },
   cloud3: { src: "static/img/cloud3.jpg" },
+}, function(){
+  $('canvas').addClass('shown');
 });
 
 var arrays = {
@@ -59,8 +61,6 @@ function render(time) {
   twgl.setBuffersAndAttributes(gl, programInfo, bufferInfo);
   twgl.setUniforms(programInfo, uniforms);
   twgl.drawBufferInfo(gl, bufferInfo);
-
-  $('canvas').addClass('shown');
 
   requestAnimationFrame(render);
 }
