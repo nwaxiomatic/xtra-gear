@@ -68,7 +68,7 @@ vec2 distance = vec2(pixels, pixels) / resolution_n;
   vec2 poso = SCALED_TEX_COORD(gl_FragCoord.xy, resolution_n);
   vec2 posn = poso + vec2(time/30.0, 0.0);
   posn = MODULUS(posn, 1.0);
-  vec2 poso2 = posn + vec2(0.012, 0.012 * sin(time));
+  vec2 poso2 = MODULUS(posn + vec2(0.01 * cos(time), 0.012 * sin(time)), 1.0);
 
   vec2 pos_r = MODULUS(posn + vec2(distance.x, 0.0), 1.0);
   vec2 pos_l = MODULUS(posn + vec2(-distance.x, 0.0), 1.0);
