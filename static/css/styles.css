@@ -1,16 +1,15 @@
 body {
   margin: 0;
   font-family: monospace;
-  background-color: white;
-  /*
-  background: url(../img/bg.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background-color: black;
+  /*background: url(../img/holo2.jpg) no-repeat center center fixed; 
+  -webkit-background-size: center-fill;
+  -moz-background-size: center-fill;
+  -o-background-size: center-fill;
+  background-size: center-fill;
   */
 }
-.container {
+.container, .center-fill {
 	width: 100vw;
 	height: 100vh;
 }
@@ -22,15 +21,19 @@ canvas, .canvas-bg {
 	top: 50%;
 	left: 50%;
 	transform: translateX(-50%) translateY(-50%);
-	-webkit-filter: blur(1px);
+	/*-webkit-filter: blur(1px);*/
 	box-shadow: 0px 0px 3px 3px #000;
+	z-index: 8
+}
+#c2{
+	z-index: 1;
 }
 #b {
 position: absolute;
 top: 10px;
 width: 100%;
 text-align: center;
-z-index: 2;
+z-index: 6;
 }
 
 .hidden {
@@ -43,4 +46,17 @@ z-index: 2;
     transition: visibility 2s, opacity 2s;
     visibility: visible;
     opacity: 1;
+}
+
+.white-bar {
+	width: 300vh;
+	height: 1vh;
+	-ms-transform: rotate(-45deg); /* IE 9 */
+    -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+    transform: translateX(-7%) rotate(-45deg);
+    background-color: black;
+    z-index: 5;
+	position: absolute;
+	top: 0%;
+	left: 0%;
 }
