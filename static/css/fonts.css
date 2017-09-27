@@ -1,0 +1,8 @@
+/* latin */
+@font-face {
+  font-family: 'Libre Barcode 39 Text';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Libre Barcode 39 Text Regular'), local('LibreBarcode39Text-Regular'), url(https://fonts.gstatic.com/s/librebarcode39text/v3/O4inMvtTcDsw_GI-nhT1ni2KyhR4Gp7Y4OQ1Ij1FzWuglnMp3_3A8V8Ai8YosRtX.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}

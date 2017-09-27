@@ -1,3 +1,9 @@
+.shop {
+  font-family: 'Libre Barcode 39 Text', cursive;
+  color: #ffcc00;
+  font-size: 60px;
+}
+
 body {
   margin: 0;
   font-family: monospace;
@@ -9,10 +15,65 @@ body {
   background-size: center-fill;
   */
 }
+
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+  cursor: default;
+}
+
 .container, .center-fill {
 	width: 100vw;
 	height: 100vh;
 }
+
+.bottom-right {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.center-wide {
+  position: absolute;
+  width: 100vw;
+  height: 32vh;
+  top: 50%;
+  left: 0%;
+  transform: translateY(-50%);
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.top-wide {
+  position: absolute;
+  width: 100vw;
+  height: 15vh;
+  top: 0%;
+  left: 0%;
+}
+
+.bottom-wide {
+  position: absolute;
+  width: 100vw;
+  height: 15vh;
+  bottom: 0%;
+  left: 0%;
+}
+
+.main-logo {
+  height: 100%;
+  float: left;
+}
+
+.main-logo path {
+  fill: #ff6600;
+}
+
 canvas, .canvas-bg {
   display: block;
   width: 50vw;
@@ -25,9 +86,11 @@ canvas, .canvas-bg {
 	box-shadow: 0px 0px 3px 3px #000;
 	z-index: 8
 }
+
 #c2{
 	z-index: 1;
 }
+
 #b {
 position: absolute;
 top: 10px;
