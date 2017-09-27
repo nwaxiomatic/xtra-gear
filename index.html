@@ -27,7 +27,7 @@
 
 
   <body>
-    <div class="container">
+    <div class="container hidden">
 
       	<div id="demo" class="marquee-left top-wide">
           <p class="demo-p">
@@ -64,6 +64,11 @@
   </script>
 
   <script src="static/js/svgLoader.js" ></script>
+  <script>
+    setTimeout(function(){
+      $('.container').addClass('shown');
+    }, 100);
+  </script>
 
 </html>
 
