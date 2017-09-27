@@ -53,7 +53,7 @@ a {
   position: absolute;
   width: 100vw;
   height: 15vh;
-  top: 0%;
+  top: 20px;
   left: 0%;
 }
 
@@ -61,7 +61,7 @@ a {
   position: absolute;
   width: 100vw;
   height: 15vh;
-  bottom: 0%;
+  bottom: 20px;
   left: 0%;
 }
 
