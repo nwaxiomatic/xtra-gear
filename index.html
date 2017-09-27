@@ -40,7 +40,7 @@
           <img class="main-logo svg" src="static/img/Artboard 3.svg">
         </p>
         </div>
-        <div class="center shop"> <a href="https://xtragear.bigcartel.com"> SHOP </a> </div>
+        <div class="center shop"> <button id="shop-button">SHOP</button> </div>
   </div>
   </body>
 
@@ -61,6 +61,9 @@
           $(this).css("color", "#ffcc00");
         }
     );
+    $('#shop-button').click(function(){
+      window.location = "https://xtragear.bigcartel.com";
+    });
   </script>
 
   <script src="static/js/svgLoader.js" ></script>

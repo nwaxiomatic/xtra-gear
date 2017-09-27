@@ -3,11 +3,22 @@
   color: #ffcc00;
   font-size: 60px;
 }
+#shop-button {
+  background: none !important;
+    color: inherit;
+    border: none;
+    padding: 0! important;
+    font: inherit;
+    cursor: default;
+    outline: inherit !important;
+
+}
 
 body {
   margin: 0;
   font-family: monospace;
   background-color: black;
+  overflow: hidden;
   /*background: url(../img/holo2.jpg) no-repeat center center fixed; 
   -webkit-background-size: center-fill;
   -moz-background-size: center-fill;
@@ -25,6 +36,7 @@ a {
 .container, .center-fill {
 	width: 100vw;
 	height: 100vh;
+  overflow: hidden;
 }
 
 .bottom-right {
