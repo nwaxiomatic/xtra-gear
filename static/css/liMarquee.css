@@ -15,21 +15,17 @@
  -webkit-transform:translateX(100%);	
  transform:translateX(100%);
  /* Apply animation to this element */	
- -moz-animation: scroll-left 4s 0.1s linear infinite;
- -webkit-animation: scroll-left 4s 0.1s linear infinite;
- animation: scroll-left 4s 0.1s linear infinite;
+ -moz-animation: scroll-left 5s 0.1s linear infinite;
+ -webkit-animation: scroll-left 5s 0.1s linear infinite;
+ animation: scroll-left 5s 0.1s linear infinite;
 }
 /* Move it (define the animation) */
 @-moz-keyframes scroll-left {
  0%   { -moz-transform: translateX(100%); }
- 25%   { -moz-transform: translateX(45%); }
- 50%   { -moz-transform: translateX(30%); }
  100% { -moz-transform: translateX(-100%); }
 }
 @-webkit-keyframes scroll-left {
  0%   { -webkit-transform: translateX(100%); }
- 25%   { -webkit-transform: translateX(45%); }
- 50%   { -webkit-transform: translateX(30%); }
  100% { -webkit-transform: translateX(-100%); }
 }
 @keyframes scroll-left {
@@ -37,16 +33,6 @@
  -moz-transform: translateX(100%); /* Browser bug fix */
  -webkit-transform: translateX(100%); /* Browser bug fix */
  transform: translateX(100%); 		
- }
- 25%   { 
- -moz-transform: translateX(45%); /* Browser bug fix */
- -webkit-transform: translateX(45%); /* Browser bug fix */
- transform: translateX(45%); 		
- }
- 50%   { 
- -moz-transform: translateX(30%); /* Browser bug fix */
- -webkit-transform: translateX(30%); /* Browser bug fix */
- transform: translateX(30%); 		
  }
  100% { 
  -moz-transform: translateX(-100%); /* Browser bug fix */
@@ -67,21 +53,17 @@
  -webkit-transform:translateX(-100%);	
  transform:translateX(-100%);
  /* Apply animation to this element */	
- -moz-animation: scroll-right 4s 0.1s  linear infinite;
- -webkit-animation: scroll-right 4s 0.1s  linear infinite;
- animation: scroll-right 4s 0.1s  linear infinite;
+ -moz-animation: scroll-right 5s 0.1s  linear infinite;
+ -webkit-animation: scroll-right 5s 0.1s  linear infinite;
+ animation: scroll-right 5s 0.1s  linear infinite;
 }
 /* Move it (define the animation) */
 @-moz-keyframes scroll-right {
  0%   { -moz-transform: translateX(-100%); }
- 25%   { -moz-transform: translateX(-45%); }
-  50%   { -moz-transform: translateX(-30%); }
  100% { -moz-transform: translateX(100%); }
 }
 @-webkit-keyframes scroll-right {
  0%   { -webkit-transform: translateX(-100%); }
-  25%   { -webkit-transform: translateX(-45%); }
-  50%   { -webkit-transform: translateX(-30%); }
  100% { -webkit-transform: translateX(100%); }
 }
 @keyframes scroll-right {
@@ -89,16 +71,6 @@
  -moz-transform: translateX(-100%); /* Browser bug fix */
  -webkit-transform: translateX(-100%); /* Browser bug fix */
  transform: translateX(-100%); 		
- }
-  25%   { 
- -moz-transform: translateX(-45%); /* Browser bug fix */
- -webkit-transform: translateX(-45%); /* Browser bug fix */
- transform: translateX(-45%); 		
- }
-  50%   { 
- -moz-transform: translateX(-30%); /* Browser bug fix */
- -webkit-transform: translateX(-30%); /* Browser bug fix */
- transform: translateX(-30%); 		
  }
  100% { 
  -moz-transform: translateX(100%); /* Browser bug fix */
