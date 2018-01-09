@@ -1,17 +1,31 @@
 var xtraYellow = "#ffcc00";
+var xtraLogo = "#ff6600";
+
+function setBeginningColor(){
+  $(".inset-container").css("background-color", "black");
+  $(".yellow").css("background-color", xtraYellow);
+  $(".text-marquee ").css("color", "black");
+  $('.shop').css("color", xtraYellow);
+}
+
+function setInverseColor(){
+  $(".inset-container").css("background-color", xtraYellow);
+  $(".yellow").css("background-color", "black");
+  $(".text-marquee ").css("color", xtraYellow);
+  $(".shop").css("color", "black");
+}
 
 $(document).ready(function() {
+
+    setBeginningColor();
+
+    $('.main-logo path').css("fill", xtraLogo);
+
     $(".shop").hover(function(){
-        $(".inset-container").css("background-color", xtraYellow);
-        $(".yellow").css("background-color", "black");
-        $(".text-marquee ").css("color", xtraYellow);
-          $(this).css("color", "black");
+          setInverseColor();
         },
         function(){
-          $(".inset-container").css("background-color", "black");
-          $(".yellow").css("background-color", xtraYellow);
-          $(".text-marquee ").css("color", "black");
-          $(this).css("color", xtraYellow);
+          setBeginningColor();
         }
     );
 
@@ -40,7 +54,7 @@ $(document).ready(function() {
     var marqueeSpanRight = $('<span />').addClass('text-marquee-span').html(textSpanRight.html());
     
 
-    for(var i = 0; i < 32; i++){
+    for(var i = 0; i < 19; i++){
       marqueeSpanLeft.clone().appendTo('.text-marquee-top .text-marquee');
       marqueeSpanLeft.clone().appendTo('.text-marquee-bottom .text-marquee');
 
