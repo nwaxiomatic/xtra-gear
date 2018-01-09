@@ -48,7 +48,7 @@ $(document).ready(function() {
     }
     $(function () {
     textMarquee.marquee({
-        duration: 10000,
+        duration: 20000,
          duplicated: true,
          gap: 00, 
          direction: 'right',
