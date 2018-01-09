@@ -26,6 +26,7 @@ $(document).ready(function() {
 
     if (isMobile){
       $('.container').css({ 'height': window.innerHeight });
+      $('.text-marquee-container').css({ 'width': window.innerHeight });
       $('body').css({ 'height': window.innerHeight });
     }
 
