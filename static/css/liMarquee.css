@@ -64,7 +64,17 @@
 }
 
 .text-marquee-span {
-	margin-right: 10px;
+	margin-right: 25px;
+}
+
+.text-marquee-span a {
+	transition: all 1s;
+	text-decoration: underline overline;
+}
+
+.text-marquee-span a:hover {
+	transition: all 1s;
+	text-decoration: line-through;
 }
 
 .marquee-container {
