@@ -1,11 +1,17 @@
+var xtraYellow = "#ffcc00";
+
 $(document).ready(function() {
     $(".shop").hover(function(){
-        $("body").css("background-color", "#ffcc00");
+        $(".inset-container").css("background-color", xtraYellow);
+        $(".yellow").css("background-color", "black");
+        $(".text-marquee ").css("color", xtraYellow);
           $(this).css("color", "black");
         },
         function(){
-          $("body").css("background-color", "black");
-          $(this).css("color", "#ffcc00");
+          $(".inset-container").css("background-color", "black");
+          $(".yellow").css("background-color", xtraYellow);
+          $(".text-marquee ").css("color", "black");
+          $(this).css("color", xtraYellow);
         }
     );
 
@@ -22,6 +28,36 @@ $(document).ready(function() {
       $('.container').css({ 'height': window.innerHeight });
     }
 
+
+    var textMarquee = $('.text-marquee');
+
+    var textSpanLeft = $('#text-marquee-span-left');
+    var marqueeSpanLeft = $('<span />').addClass('text-marquee-span').html(textSpanLeft.html());
+    
+    var textSpanRight = $('#text-marquee-span-right');
+    var marqueeSpanRight = $('<span />').addClass('text-marquee-span').html(textSpanRight.html());
+    
+
+    for(var i = 0; i < 32; i++){
+      marqueeSpanLeft.clone().appendTo('.text-marquee-top .text-marquee');
+      marqueeSpanLeft.clone().appendTo('.text-marquee-bottom .text-marquee');
+
+      marqueeSpanRight.clone().appendTo('.text-marquee-left .text-marquee');
+      marqueeSpanRight.clone().appendTo('.text-marquee-right .text-marquee');
+    
+    }
+    $(function () {
+    textMarquee.marquee({
+        duration: 10000,
+         duplicated: true,
+         gap: 00, 
+         direction: 'right',
+         pauseOnHover: true,
+         startVisible: true,
+         delayBeforeStart: 0,
+    });
+});
+
 });
 
 $(window).on("load", function() {
@@ -29,3 +65,4 @@ $(window).on("load", function() {
       $('.container').addClass('shown');
     }, 100);
 });
+

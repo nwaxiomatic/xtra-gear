@@ -1,15 +1,114 @@
-.marquee {
-	overflow: hidden;
- position: relative;
+.text-marquee-container {
+	width: 100vh;
+	height: 50px;
+	position: absolute;
+	z-index: 1000;
 }
 
-.marquee-left p {
+.text-marquee-left {
+	top: 0;
+	left: 0;
+	transform-origin: top left;
+	transform: rotate(-90deg) translateX(-100%) translateY(0px);
+}
+
+.text-marquee-right {
+	top: 0;
+	right: 0;
+	transform-origin: top right;
+	transform: rotate(90deg) translateX(100%) translateY(0px);
+}
+
+.text-marquee-top {
+	top: 0;
+	right: 0;
+}
+.text-marquee-bottom {
+	bottom: 0;
+	left: 0;
+	transform-origin: top left;
+	transform: rotate(180deg) translateX(-100%) translateY(-100%);
+}
+
+.text-marquee-wide {
+	width: 100vw;
+	/*padding-left: 50px;
+	padding-right: 50px;*/
+	/*box-sizing: border-box;*/
+	/*transform: translateX(-25px);*/
+}
+
+
+.text-marquee-cut-block {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	right: 0px;
+	z-index: 10;
+}
+
+.text-marquee-cut-left {
+	left: 0px;
+}
+
+.text-marquee-cut-right {
+	right: 0px;
+}
+
+.text-marquee {
+  width: 100%; /* the plugin works for responsive layouts so width is not necessary */
+  overflow: hidden;
+  color: black;
+  font-size: 30px;
+  font-family: 'Open Sans';
+}
+
+.text-marquee-span {
+	margin-right: 10px;
+}
+
+.marquee-container {
+	width: 100%;
+	height: 100%;
+}
+
+.marquee {
+	overflow: hidden;
+	position: relative;
+	box-sizing: border-box;
+}
+
+.top-wide {
+  width: 100%;
+  height: 15%;
+  top: 20px;
+  left: 0%;
+  overflow: hidden;
+}
+
+.center-fill {
+	width: 100%;
+  	height: 70%;
+}
+
+.bottom-wide {
+  width: 100%;
+  height: 15%;
+  bottom: 20px;
+  left: 0%;
+  overflow: hidden;
+}
+
+.marquee-p {
  position: absolute;
  width: 100%;
  height: 100%;
  margin: 0;
  line-height: 50px;
  text-align: center;
+}
+
+ .marquee-left p {
  /* Starting position */
  -moz-transform:translateX(100%);
  -webkit-transform:translateX(100%);	
@@ -56,12 +155,6 @@
 }
 
 .marquee-right p {
- position: absolute;
- width: 100%;
- height: 100%;
- margin: 0;
- line-height: 50px;
- text-align: center;
  /* Starting position */
  -moz-transform:translateX(-100%);
  -webkit-transform:translateX(-100%);	

@@ -121,11 +121,8 @@
                 }
             });
 
-            // Reintroduce speed as an option. It calculates duration as a factor of the container width
-            // measured in pixels per second.
-            if (o.speed) {
-                o.duration = parseInt($this.width(), 10) / o.speed * 1000;
-            }
+            // since speed option is changed to duration, to support speed for those who are already using it
+            o.duration = o.speed || o.duration;
 
             // Shortcut to see if direction is upward or downward
             verticalDir = o.direction == 'up' || o.direction == 'down';
@@ -172,16 +169,16 @@
 
                 var elHeight = $this.find('.js-marquee:first').height() + o.gap;
 
-                // adjust the animation duration according to the text length
+                // adjust the animation speed according to the text length
                 if (o.startVisible && !o.duplicated) {
                     // Compute the complete animation duration and save it for later reference
-                    // formula is to: (Height of the text node + height of the main container / Height of the main container) * duration;
+                    // formula is to: (Height of the text node + height of the main container / Height of the main container) * speed;
                     o._completeDuration = ((parseInt(elHeight, 10) + parseInt(containerHeight, 10)) / parseInt(containerHeight, 10)) * o.duration;
 
-                    // formula is to: (Height of the text node / height of the main container) * duration
+                    // formula is to: (Height of the text node / height of the main container) * speed
                     o.duration = (parseInt(elHeight, 10) / parseInt(containerHeight, 10)) * o.duration;
                 } else {
-                    // formula is to: (Height of the text node + height of the main container / Height of the main container) * duration;
+                    // formula is to: (Height of the text node + height of the main container / Height of the main container) * speed;
                     o.duration = ((parseInt(elHeight, 10) + parseInt(containerHeight, 10)) / parseInt(containerHeight, 10)) * o.duration;
                 }
 
@@ -192,21 +189,21 @@
                 // container width
                 containerWidth = $this.width();
 
-                // adjust the animation duration according to the text length
+                // adjust the animation speed according to the text length
                 if (o.startVisible && !o.duplicated) {
                     // Compute the complete animation duration and save it for later reference
-                    // formula is to: (Width of the text node + width of the main container / Width of the main container) * duration;
+                    // formula is to: (Width of the text node + width of the main container / Width of the main container) * speed;
                     o._completeDuration = ((parseInt(elWidth, 10) + parseInt(containerWidth, 10)) / parseInt(containerWidth, 10)) * o.duration;
 
-                    // (Width of the text node / width of the main container) * duration
+                    // (Width of the text node / width of the main container) * speed
                     o.duration = (parseInt(elWidth, 10) / parseInt(containerWidth, 10)) * o.duration;
                 } else {
-                    // formula is to: (Width of the text node + width of the main container / Width of the main container) * duration;
+                    // formula is to: (Width of the text node + width of the main container / Width of the main container) * speed;
                     o.duration = ((parseInt(elWidth, 10) + parseInt(containerWidth, 10)) / parseInt(containerWidth, 10)) * o.duration;
                 }
             }
 
-            // if duplicated then reduce the duration
+            // if duplicated then reduce the speed
             if (o.duplicated) {
                 o.duration = o.duration / 2;
             }
@@ -246,25 +243,25 @@
             }
 
             var _rePositionVertically = function() {
-                $marqueeWrapper.css('transform', 'translateY(' + (o.direction == 'up' ? containerHeight + 'px' : '-' + elHeight + 'px') + ')');
+                $marqueeWrapper.css('margin-top', o.direction == 'up' ? containerHeight + 'px' : '-' + elHeight + 'px');
             },
             _rePositionHorizontally = function() {
-                $marqueeWrapper.css('transform', 'translateX(' + (o.direction == 'left' ? containerWidth + 'px' : '-' + elWidth + 'px') + ')');
+                $marqueeWrapper.css('margin-left', o.direction == 'left' ? containerWidth + 'px' : '-' + elWidth + 'px');
             };
 
             // if duplicated option is set to true than position the wrapper
             if (o.duplicated) {
                 if (verticalDir) {
                     if (o.startVisible) {
-                        $marqueeWrapper.css('transform', 'translateY(0)');
+                        $marqueeWrapper.css('margin-top', 0);
                     } else {
-                        $marqueeWrapper.css('transform', 'translateY(' + (o.direction == 'up' ? containerHeight + 'px' : '-' + ((elHeight * 2) - o.gap) + 'px') + ')');
+                        $marqueeWrapper.css('margin-top', o.direction == 'up' ? containerHeight + 'px' : '-' + ((elHeight * 2) - o.gap) + 'px');
                     }
                 } else {
                     if (o.startVisible) {
-                        $marqueeWrapper.css('transform', 'translateX(0)');
+                        $marqueeWrapper.css('margin-left', 0);
                     } else {
-                        $marqueeWrapper.css('transform', 'translateX(' + (o.direction == 'left' ? containerWidth + 'px' : '-' + ((elWidth * 2) - o.gap) + 'px') + ')');
+                        $marqueeWrapper.css('margin-left', o.direction == 'left' ? containerWidth + 'px' : '-' + ((elWidth * 2) - o.gap) + 'px');
                     }
                 }
 
@@ -273,7 +270,7 @@
                   loopCount = 1;
                 }
             } else if (o.startVisible) {
-                // We only have two different loops if marquee is duplicated and starts visible
+                // We only have two different loops if marquee is duplicated and starts visible 
                 loopCount = 2;
             } else {
                 if (verticalDir) {
@@ -318,11 +315,11 @@
 
                         // Adjust the starting point of animation only when first loops finishes
                         if (loopCount > 2) {
-                            $marqueeWrapper.css('transform', 'translateY(' + (o.direction == 'up' ? 0 : '-' + elHeight + 'px') + ')');
+                            $marqueeWrapper.css('margin-top', o.direction == 'up' ? 0 : '-' + elHeight + 'px');
                         }
 
                         animationCss = {
-                            'transform': 'translateY(' + (o.direction == 'up' ? '-' + elHeight + 'px' : 0) + ')'
+                            'margin-top': o.direction == 'up' ? '-' + elHeight + 'px' : 0
                         };
                     } else if (o.startVisible) {
                         // This loop moves the marquee out of the container
@@ -332,7 +329,7 @@
                                 animationCss3Str = animationName + ' ' + o.duration / 1000 + 's ' + o.delayBeforeStart / 1000 + 's ' + o.css3easing;
                             }
                             animationCss = {
-                                'transform': 'translateY(' + (o.direction == 'up' ? '-' + elHeight + 'px' : containerHeight + 'px') + ')'
+                                'margin-top': o.direction == 'up' ? '-' + elHeight + 'px' : containerHeight + 'px'
                             };
                             loopCount++;
                         } else if (loopCount === 3) {
@@ -349,7 +346,7 @@
                     } else {
                         _rePositionVertically();
                         animationCss = {
-                            'transform': 'translateY(' + (o.direction == 'up' ? '-' + ($marqueeWrapper.height()) + 'px' : containerHeight + 'px') + ')'
+                            'margin-top': o.direction == 'up' ? '-' + ($marqueeWrapper.height()) + 'px' : containerHeight + 'px'
                         };
                     }
                 } else {
@@ -357,11 +354,11 @@
 
                         // Adjust the starting point of animation only when first loops finishes
                         if (loopCount > 2) {
-                            $marqueeWrapper.css('transform', 'translateX(' + (o.direction == 'left' ? 0 : '-' + elWidth + 'px') + ')');
+                            $marqueeWrapper.css('margin-left', o.direction == 'left' ? 0 : '-' + elWidth + 'px');
                         }
 
                         animationCss = {
-                            'transform': 'translateX(' + (o.direction == 'left' ? '-' + elWidth + 'px' : 0) + ')'
+                            'margin-left': o.direction == 'left' ? '-' + elWidth + 'px' : 0
                         };
 
                     } else if (o.startVisible) {
@@ -372,7 +369,7 @@
                                 animationCss3Str = animationName + ' ' + o.duration / 1000 + 's ' + o.delayBeforeStart / 1000 + 's ' + o.css3easing;
                             }
                             animationCss = {
-                                'transform': 'translateX(' + (o.direction == 'left' ? '-' + elWidth + 'px' : containerWidth + 'px') + ')'
+                                'margin-left': o.direction == 'left' ? '-' + elWidth + 'px' : containerWidth + 'px'
                             };
                             loopCount++;
                         } else if (loopCount === 3) {
@@ -389,7 +386,7 @@
                     } else {
                         _rePositionHorizontally();
                         animationCss = {
-                            'transform': 'translateX(' + (o.direction == 'left' ? '-' + elWidth + 'px' : containerWidth + 'px') + ')'
+                            'margin-left': o.direction == 'left' ? '-' + elWidth + 'px' : containerWidth + 'px'
                         };
                     }
                 }
@@ -444,8 +441,7 @@
             $this.bind('resume', methods.resume);
 
             if (o.pauseOnHover) {
-                $this.bind('mouseenter', methods.pause);
-                $this.bind('mouseleave', methods.resume);
+                $this.bind('mouseenter mouseleave', methods.toggle);
             }
 
             // If css3 animation is supported than call animate method at once
@@ -472,7 +468,7 @@
         direction: 'left',
         // true or false - should the marquee be duplicated to show an effect of continues flow
         duplicated: false,
-        // duration in milliseconds of the marquee in milliseconds
+        // speed in milliseconds of the marquee in milliseconds
         duration: 5000,
         // gap in pixels between the tickers
         gap: 20,

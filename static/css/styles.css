@@ -33,11 +33,40 @@ a {
   cursor: default;
 }
 
-.container, .center-fill {
+.container, .center-fill{
 	width: 100vw;
 	height: 100vh;
   overflow: hidden;
   overflow-x: hidden;
+}
+
+.inset-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  box-sizing: border-box;
+  background-color: black;
+  background-clip: content-box;
+  overflow: hidden;
+  overflow-x: hidden;
+  background-color: black;
+}
+
+/*.inset-container:hover {
+  padding: 60px;
+}*/
+
+.yellow {
+  background-color: #ffcc00;
+  color: yellow;
+}
+
+.black {
+  background-color: black;
+  color: black;
 }
 
 .bottom-right {
@@ -61,24 +90,6 @@ a {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  overflow: hidden;
-}
-
-.top-wide {
-  position: absolute;
-  width: 100vw;
-  height: 15vh;
-  top: 20px;
-  left: 0%;
-  overflow: hidden;
-}
-
-.bottom-wide {
-  position: absolute;
-  width: 100vw;
-  height: 15vh;
-  bottom: 20px;
-  left: 0%;
   overflow: hidden;
 }
 
