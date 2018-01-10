@@ -57,6 +57,7 @@ $(document).ready(function() {
       });
       window.addEventListener('touchend', function onFirstTouch() {
         clearInterval(raveFunction);
+        setBeginningColor();
       });
     }
 
