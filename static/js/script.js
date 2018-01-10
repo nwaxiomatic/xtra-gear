@@ -54,7 +54,7 @@ $(document).ready(function() {
     var marqueeSpanRight = $('<span />').addClass('text-marquee-span').html(textSpanRight.html());
     
 
-    for(var i = 0; i < 19; i++){
+    for(var i = 0; i < 25; i++){
       marqueeSpanLeft.clone().appendTo('.text-marquee-top .text-marquee');
       marqueeSpanLeft.clone().appendTo('.text-marquee-bottom .text-marquee');
 
