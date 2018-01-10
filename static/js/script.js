@@ -1,6 +1,8 @@
 var xtraYellow = "#ffcc00";
 var xtraLogo = "#ff6600";
 
+var raveRate = 70;
+
 function setBeginningColor(){
   $(".inset-container").css("background-color", "black");
   $(".yellow").css("background-color", xtraYellow);
@@ -15,19 +17,27 @@ function setInverseColor(){
   $(".shop").css("color", "black");
 }
 
+var raveFunction; 
+
+function raveLights1(){
+  setBeginningColor();
+  raveFunction = setTimeout(function(){
+        raveLights2();
+      }, raveRate);
+}
+
+function raveLights2(){
+  setInverseColor();
+  raveFunction = setTimeout(function(){
+        raveLights1();
+      }, raveRate);
+}
+
 $(document).ready(function() {
 
-    setBeginningColor();
+  setBeginningColor();
+  $('.main-logo path').css("fill", xtraLogo);
 
-    $('.main-logo path').css("fill", xtraLogo);
-
-    $(".shop").hover(function(){
-          setInverseColor();
-        },
-        function(){
-          setBeginningColor();
-        }
-    );
 
     $('#shop-button').click(function(){
       window.location = "http://shop.xtragear.services/";
@@ -42,6 +52,22 @@ $(document).ready(function() {
       $('.container').css({ 'height': window.innerHeight });
       $('.text-marquee-container').css({ 'width': window.innerHeight });
       $('body').css({ 'height': window.innerHeight });
+      window.addEventListener('touchstart', function onFirstTouch() {
+        raveLights1();
+      });
+      window.addEventListener('touchend', function onFirstTouch() {
+        clearInterval(raveFunction);
+      });
+    }
+
+    else{
+      $(".shop").hover(function(){
+          setInverseColor();
+        },
+        function(){
+          setBeginningColor();
+        }
+    );
     }
 
 
