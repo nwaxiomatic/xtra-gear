@@ -212,3 +212,21 @@
 .marquee-right p svg {
 	float: right;
 }
+
+@media only screen 
+  and (max-device-width: 812px) { 
+  	.marquee-right p {
+	 /* Apply animation to this element */	
+	 -moz-animation: scroll-right 2s 0.1s  linear infinite;
+	 -webkit-animation: scroll-right 2s 0.1s  linear infinite;
+	 animation: scroll-right 2s 0.1s  linear infinite;
+	}
+
+	.marquee-left p {
+	 /* Apply animation to this element */	
+	 -moz-animation: scroll-left 2s 0.1s linear infinite;
+	 -webkit-animation: scroll-left 2s 0.1s linear infinite;
+	 animation: scroll-left 2s 0.1s linear infinite;
+	}
+
+}
