@@ -1,5 +1,5 @@
 var xtraYellow = "#F8FF01";
-var xtraLogo = "#55896A";
+var xtraLogo = "#5C884A";
 
 var raveRate = 70;
 
