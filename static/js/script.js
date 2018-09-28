@@ -36,8 +36,14 @@ function raveLights2(){
 $(document).ready(function() {
 
   setBeginningColor();
-  $('.main-logo path').css("fill", xtraLogo);
 
+  // var img = new Image();
+  // img.onload = function() { 
+  //   $('.main-logo').attr('src', img.src)
+  //   $('.main-logo path').css("fill", xtraLogo);
+  // }
+  // img.src = "static/img/Artboard 3.svg";
+  
 
     $('#shop-button').click(function(){
       window.location = "http://shop.xtragear.services/";

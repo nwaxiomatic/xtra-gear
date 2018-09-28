@@ -1,6 +1,6 @@
 .shop {
   font-family: 'Libre Barcode 39 Text', cursive;
-  color: #ffcc00;
+  color: #CEDE47;
   font-size: 60px;
 }
 #shop-button {
@@ -60,7 +60,7 @@ a {
 }*/
 
 .yellow {
-  background-color: #ffcc00;
+  background-color: #CEDE47;
   color: yellow;
 }
 
@@ -99,7 +99,7 @@ a {
 }
 
 .main-logo path {
-  fill: #ff6600;
+  fill: #96E666;
 }
 
 canvas, .canvas-bg {
