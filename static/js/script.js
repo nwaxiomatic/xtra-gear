@@ -44,6 +44,7 @@ $(document).ready(function() {
   // }
   // img.src = "static/img/Artboard 3.svg";
   
+  $('.main-logo path').css("fill", xtraLogo);
 
     $('#shop-button').click(function(){
       window.location = "http://shop.xtragear.services/";
