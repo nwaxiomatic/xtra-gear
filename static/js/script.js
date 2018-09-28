@@ -8,6 +8,8 @@ function setBeginningColor(){
   $(".yellow").css("background-color", xtraYellow);
   $(".text-marquee ").css("color", "black");
   $('.shop').css("color", xtraYellow);
+  $('.main-logo path').css("fill", xtraLogo);
+
 }
 
 function setInverseColor(){
@@ -15,6 +17,7 @@ function setInverseColor(){
   $(".yellow").css("background-color", "black");
   $(".text-marquee ").css("color", xtraYellow);
   $(".shop").css("color", "black");
+  $('.main-logo path').css("fill", "black");
 }
 
 var raveFunction;
